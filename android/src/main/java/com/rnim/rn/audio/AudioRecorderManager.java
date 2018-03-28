@@ -111,7 +111,10 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
 
     recorder = new MediaRecorder();
     try {
-      recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
+      AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+      audioManager.startBluetoothSco();
+      
+      recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
       int outputFormat = getOutputFormatFromString(recordingSettings.getString("OutputFormat"));
       recorder.setOutputFormat(outputFormat);
       int audioEncoder = getAudioEncoderFromString(recordingSettings.getString("AudioEncoding"));
