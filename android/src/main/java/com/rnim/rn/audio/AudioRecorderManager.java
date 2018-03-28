@@ -111,7 +111,7 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
 
     recorder = new MediaRecorder();
     try {
-      recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+      recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
       int outputFormat = getOutputFormatFromString(recordingSettings.getString("OutputFormat"));
       recorder.setOutputFormat(outputFormat);
       int audioEncoder = getAudioEncoderFromString(recordingSettings.getString("AudioEncoding"));

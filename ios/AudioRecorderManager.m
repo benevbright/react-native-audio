@@ -174,7 +174,8 @@ RCT_EXPORT_METHOD(prepareRecordingAtPath:(NSString *)path sampleRate:(float)samp
       [_recordSession setCategory:AVAudioSessionCategoryRecord error:nil];
       [_recordSession setMode:AVAudioSessionModeMeasurement error:nil];
   }else{
-      [_recordSession setCategory:AVAudioSessionCategoryMultiRoute error:nil];
+      [_recordSession setCategory:AVAudioSessionCategoryRecord withOptions:AVAudioSessionCategoryOptionAllowBluetooth error:nil];
+      // [_recordSession setCategory:AVAudioSessionCategoryMultiRoute error:nil];
   }
 
   _audioRecorder = [[AVAudioRecorder alloc]
@@ -195,6 +196,9 @@ RCT_EXPORT_METHOD(prepareRecordingAtPath:(NSString *)path sampleRate:(float)samp
 
 RCT_EXPORT_METHOD(startRecording)
 {
+  //todo:create check
+  NSLog(@"%@", [_recordSession availableInputs]);
+
   [self startProgressTimer];
   [_recordSession setActive:YES error:nil];
   [_audioRecorder record];
