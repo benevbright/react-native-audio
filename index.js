@@ -70,6 +70,12 @@ var AudioRecorder = {
   stopRecording: function() {
     return AudioRecorderManager.stopRecording();
   },
+  startBluetoothSco: function() {
+    AudioRecorderManager.startBluetoothSco();
+  },
+  stopBluetoothSco: function() {
+    AudioRecorderManager.stopBluetoothSco();
+  },
   checkAuthorizationStatus: AudioRecorderManager.checkAuthorizationStatus,
   requestAuthorization: AudioRecorderManager.requestAuthorization,
   removeListeners: function() {

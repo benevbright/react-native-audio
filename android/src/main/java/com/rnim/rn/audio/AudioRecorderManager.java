@@ -178,6 +178,17 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void startBluetoothSco(){
+    AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+    audioManager.startBluetoothSco();
+  }
+  @ReactMethod
+  public void stopBluetoothSco(){
+    AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+    audioManager.stopBluetoothSco();
+  }
+
+  @ReactMethod
   public void startRecording(Promise promise){
     if (recorder == null){
       logAndRejectPromise(promise, "RECORDING_NOT_PREPARED", "Please call prepareRecordingAtPath before starting recording");
@@ -188,8 +199,8 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
       return;
     }
 
-    AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-    audioManager.startBluetoothSco();
+    // AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+    // audioManager.startBluetoothSco();
 
     recorder.start();
 
