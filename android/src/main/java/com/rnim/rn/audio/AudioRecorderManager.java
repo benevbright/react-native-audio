@@ -181,11 +181,13 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
   public void startBluetoothSco(){
     AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
     audioManager.startBluetoothSco();
+    audioManager.setBluetoothScoOn(true);
   }
   @ReactMethod
   public void stopBluetoothSco(){
     AudioManager audioManager = (AudioManager) ((ReactApplicationContext)this.context).getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
     audioManager.stopBluetoothSco();
+    audioManager.setBluetoothScoOn(false);
   }
 
   @ReactMethod
